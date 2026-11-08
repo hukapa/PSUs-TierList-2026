@@ -1474,6 +1474,144 @@
             gap: 10px;
         }
 
+        /* Credits & About Modal Extensions */
+        .modal-card.modal-lg {
+            max-width: 680px;
+            max-height: 85vh;
+        }
+
+        .credits-content {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            font-size: 13px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            overflow-y: auto;
+            max-height: calc(85vh - 140px);
+            padding-right: 4px;
+        }
+
+        .credits-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 16px 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .credits-section h4 {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .credits-section h4 svg {
+            width: 17px;
+            height: 17px;
+            color: var(--border-focus);
+            flex-shrink: 0;
+        }
+
+        .credits-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 4px;
+        }
+
+        .credits-link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--border-focus);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            padding: 7px 14px;
+            border-radius: var(--radius-sm);
+            font-size: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.15s ease;
+        }
+
+        .credits-link-btn:hover {
+            background: rgba(56, 189, 248, 0.2);
+            border-color: var(--border-focus);
+            color: #ffffff;
+        }
+
+        .credits-link-btn svg {
+            width: 13px;
+            height: 13px;
+        }
+
+        .disclaimer-box {
+            background: rgba(234, 179, 8, 0.08);
+            border: 1px solid rgba(234, 179, 8, 0.25);
+            border-radius: var(--radius-md);
+            padding: 14px 16px;
+            font-size: 12px;
+            line-height: 1.5;
+            color: #fde047;
+        }
+
+        .disclaimer-box strong {
+            color: #ffffff;
+        }
+
+        /* App Footer */
+        .app-footer {
+            margin-top: 40px;
+            border-top: 1px solid var(--border-color);
+            background: #090e1a;
+            padding: 24px 20px;
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .app-footer a {
+            color: var(--border-focus);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .app-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-link-btn {
+            background: none;
+            border: none;
+            color: var(--border-focus);
+            cursor: pointer;
+            text-decoration: underline;
+            font-size: 13px;
+            font-family: inherit;
+            padding: 0;
+            font-weight: 500;
+            transition: color 0.15s ease;
+        }
+
+        .footer-link-btn:hover {
+            color: #ffffff;
+        }
+
         /* Toast notification */
         .toast {
             position: fixed;
@@ -1572,6 +1710,14 @@
             </div>
 
             <div class="header-actions">
+                <button class="btn btn-subtle" id="btnOpenCredits" title="Ver autoria, origem dos dados da SPL e avisos legais">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="16" x2="12" y2="12"></line>
+                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                    </svg>
+                    Créditos & Fontes
+                </button>
                 <button class="btn btn-subtle" id="btnOpenImport">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
@@ -1869,6 +2015,17 @@
         </section>
     </main>
 
+    <!-- App Footer with Official Attribution -->
+    <footer class="app-footer">
+        <div class="footer-content">
+            <p>
+                Dados e avaliações baseados na <a href="https://docs.google.com/spreadsheets/d/1akCHL7Vhzk_EhrpIGkz8zTEvYfLDcaSpZRB6Xt6JWkc/htmlview#gid=1078495601" target="_blank" rel="noopener noreferrer">SPL PSU Tier List Oficial (Google Sheets)</a> 
+                · Visualizador independente e de código aberto desenvolvido para a comunidade 
+                · <button type="button" class="footer-link-btn" id="btnFooterCredits">Ver Créditos & Avisos Legais</button>
+            </p>
+        </div>
+    </footer>
+
     <!-- Slide-Out Details Drawer -->
     <div class="drawer-overlay" id="drawerOverlay"></div>
     <aside class="drawer" id="detailsDrawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
@@ -2046,6 +2203,101 @@
         </div>
     </div>
 
+    <!-- Credits & Sourcing Modal -->
+    <div class="modal-overlay" id="creditsModal">
+        <div class="modal-card modal-lg">
+            <div class="modal-header">
+                <h3>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="16" x2="12" y2="12"></line>
+                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                    </svg>
+                    Sobre o Projeto, Créditos & Metodologia
+                </h3>
+                <button class="drawer-close-btn" id="creditsModalCloseBtn" style="width: 32px; height: 32px;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body credits-content">
+                <!-- Origem dos Dados -->
+                <div class="credits-section">
+                    <h4>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                        </svg>
+                        Origem dos Dados & Curadoria Comunitária (SPL)
+                    </h4>
+                    <p>
+                        Todos os dados técnicos, mapeamento de modelos, plataformas OEM e classificações Tier são fruto do trabalho contínuo, voluntário e minucioso da equipa <strong>SPL (Single Pin Layout / Sir ProvidenceLaw)</strong> e de especialistas de hardware (descendentes da conceituada linhagem <em>Cultists Network PSU Tier List</em> e <em>Linus Tech Tips Forums</em>).
+                    </p>
+                    <div class="credits-links">
+                        <a href="https://docs.google.com/spreadsheets/d/1akCHL7Vhzk_EhrpIGkz8zTEvYfLDcaSpZRB6Xt6JWkc/htmlview#gid=1078495601" target="_blank" rel="noopener noreferrer" class="credits-link-btn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                            Google Sheets Oficial (Ao Vivo)
+                        </a>
+                        <a href="https://psutierlist.org/" target="_blank" rel="noopener noreferrer" class="credits-link-btn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                            Website Oficial (psutierlist.org)
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Metodologia e Laboratórios -->
+                <div class="credits-section">
+                    <h4>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                        </svg>
+                        Metodologia de Testes & Laboratórios Independentes
+                    </h4>
+                    <p>
+                        A avaliação rigorosa das fontes baseia-se em relatórios de bancada de engenharia com osciloscópios, medição de ripple, tempos de resposta a transitórios e certificação de proteções elétricas (OCP, OPP, UVP, OTP):
+                    </p>
+                    <ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 4px;">
+                        <li><strong>Cybenetics Labs & Aris Mpitziopoulos (Hardware Busters)</strong> — Certificações de eficiência ETA, ruído LAMBDA e relatórios de bancada aprofundados.</li>
+                        <li><strong>Laboratórios Editoriais Independentes</strong> — Análises de componentes e desmontagem por TechPowerUp, Tom's Hardware, KitGuru e AnandTech.</li>
+                    </ul>
+                </div>
+
+                <!-- Disclaimer e Termos de Uso -->
+                <div class="disclaimer-box">
+                    <strong>Aviso Legal & Isenção de Responsabilidade (Disclaimer):</strong>
+                    <br>
+                    Esta aplicação é um <strong>visualizador independente, não-oficial e sem fins lucrativos</strong>, desenvolvido exclusivamente para fins educativos e para proporcionar uma melhor experiência de consulta e pesquisa offline aos entusiastas de PC. Este projeto não possui afiliação, patrocínio ou endosso por parte dos mantenedores da SPL ou dos fabricantes de hardware citados.
+                </div>
+
+                <!-- Licenciamento e Autoria da Interface -->
+                <div class="credits-section">
+                    <h4>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                            <line x1="8" y1="21" x2="16" y2="21"></line>
+                            <line x1="12" y1="17" x2="12" y2="21"></line>
+                        </svg>
+                        Desenvolvimento da Interface Web
+                    </h4>
+                    <p>
+                        Aplicação autónoma desenvolvida em HTML5 semântico, CSS3 Moderno e Vanilla JavaScript (ES6+), concebida para funcionar a 100% no browser local ou GitHub Pages sem dependências externas.
+                    </p>
+                    <p style="font-size: 12px; color: var(--text-muted); margin: 0;">
+                        Código-fonte da interface disponibilizado sob a <strong>Licença MIT</strong>.
+                    </p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="https://docs.google.com/spreadsheets/d/1akCHL7Vhzk_EhrpIGkz8zTEvYfLDcaSpZRB6Xt6JWkc/htmlview#gid=1078495601" target="_blank" rel="noopener noreferrer" class="btn btn-subtle">
+                    Ver Google Sheets Original
+                </a>
+                <button class="btn" id="creditsModalCloseFooterBtn">Fechar</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Toast Notification -->
     <div class="toast" id="toastMessage">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -2141,6 +2393,13 @@
         const modalCancelBtn = document.getElementById('modalCancelBtn');
         const csvDropzone = document.getElementById('csvDropzone');
         const csvFileInput = document.getElementById('csvFileInput');
+
+        // Credits Modal elements
+        const creditsModal = document.getElementById('creditsModal');
+        const btnOpenCredits = document.getElementById('btnOpenCredits');
+        const btnFooterCredits = document.getElementById('btnFooterCredits');
+        const creditsModalCloseBtn = document.getElementById('creditsModalCloseBtn');
+        const creditsModalCloseFooterBtn = document.getElementById('creditsModalCloseFooterBtn');
 
         // Action buttons
         const btnResetAllFilters = document.getElementById('btnResetAllFilters');
@@ -2382,6 +2641,9 @@
                     if (importModal.classList.contains('open')) {
                         closeImportModal();
                     }
+                    if (creditsModal.classList.contains('open')) {
+                        closeCreditsModal();
+                    }
                 }
                 if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
                     e.preventDefault();
@@ -2425,6 +2687,17 @@
             modalCancelBtn.addEventListener('click', closeImportModal);
             importModal.addEventListener('click', (e) => {
                 if (e.target === importModal) closeImportModal();
+            });
+
+            // Credits Modal Handlers
+            btnOpenCredits.addEventListener('click', openCreditsModal);
+            if (btnFooterCredits) {
+                btnFooterCredits.addEventListener('click', openCreditsModal);
+            }
+            creditsModalCloseBtn.addEventListener('click', closeCreditsModal);
+            creditsModalCloseFooterBtn.addEventListener('click', closeCreditsModal);
+            creditsModal.addEventListener('click', (e) => {
+                if (e.target === creditsModal) closeCreditsModal();
             });
 
             // Drag & Drop / File Input
@@ -2982,6 +3255,15 @@
         function closeImportModal() {
             importModal.classList.remove('open');
             csvFileInput.value = '';
+        }
+
+        // Credits Modal controls
+        function openCreditsModal() {
+            creditsModal.classList.add('open');
+        }
+
+        function closeCreditsModal() {
+            creditsModal.classList.remove('open');
         }
 
         function handleFileSelect(e) {
