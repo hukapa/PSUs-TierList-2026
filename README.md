@@ -12,26 +12,6 @@ Distribuição em **ficheiro único (`index.html`)** com zero dependências exte
 
 ---
 
-## 🚀 Demonstração Rápida & Como Executar
-
-### Opção 1: Execução Local Imediata (Offline)
-1. Descarrega o ficheiro `index.html`.
-2. Dá duplo clique no ficheiro para o abrir em qualquer browser moderno (Edge, Chrome, Brave, Firefox, Safari).
-3. **Sem servidor local, sem Node.js, sem npm, sem erros de CORS.**
-
-### Opção 2: Publicar Online via GitHub Pages (Grátis)
-1. No teu repositório no GitHub, vai a **Settings** > **Pages** (no menu lateral).
-2. Na secção **Build and deployment** > **Branch**:
-   - Seleciona o branch `main` (ou `master`).
-   - Mantém a pasta `/ (root)`.
-3. Clica em **Save**.
-4. Em cerca de 1 a 2 minutos, o teu projeto estará público e acessível em todo o mundo em:
-   ```
-   https://<o-teu-utilizador>.github.io/PSUs-TierList-2026/
-   ```
-
----
-
 ## ✨ Funcionalidades Principais
 
 * 🔍 **Pesquisa Multi-Termo Inteligente (Debounced):** Pesquisa combinada e simultânea por Marca, Série, Modelo, OEM ou Potência (ex: `"Toughpower PF3"`, `"RM850x"`, `"Focus Gold"`, `"HKC 1200W"`).
